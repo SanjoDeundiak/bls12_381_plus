@@ -19,7 +19,9 @@ rustdoc-args = [ "--html-in-header", "katex-header.html" ]
 [dev-dependencies]
 criterion = "0.3"
 ff-zeroize = "0.6"
+hex = "0.4"
 rand_xorshift = "0.3"
+sha2 = "0.9"
 
 [[bench]]
 name = "groups"
