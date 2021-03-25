@@ -8,6 +8,7 @@ use rand_core::RngCore;
 
 use ff::{Field, FieldBits, PrimeField};
 use subtle::{Choice, ConditionallySelectable, ConstantTimeEq, CtOption};
+use zeroize::Zeroize;
 
 use crate::util::{adc, mac, sbb};
 
@@ -66,6 +67,12 @@ impl ConditionallySelectable for Scalar {
             u64::conditional_select(&a.0[2], &b.0[2], choice),
             u64::conditional_select(&a.0[3], &b.0[3], choice),
         ])
+    }
+}
+
+impl Zeroize for Scalar {
+    fn zeroize(&mut self) {
+        self.0.zeroize();
     }
 }
 
